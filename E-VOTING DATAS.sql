@@ -1,9 +1,6 @@
 -- ============================================================
 --  E-Voting System  |  MySQL Workbench Setup Script
--- ============================================================
-
--- ❌ WRONG: delete secured_voting;
--- ✅ CORRECT:
+-- =========================================================
 DROP DATABASE IF EXISTS secured_voting;
 
 CREATE DATABASE secured_voting
