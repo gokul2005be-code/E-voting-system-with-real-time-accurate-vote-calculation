@@ -121,7 +121,7 @@ class VoterStatusPage:
     def __init__(self, parent):
         self.parent = parent
         self.qr_path = None
-        self.qr_image = None  # ✅ FIX: Keep reference to prevent garbage collection
+        self.qr_image = None 
 
         self.status_frame = ctk.CTkFrame(parent)
         self.status_frame.place(relx=0.5, rely=0.5, anchor="center")
@@ -169,9 +169,8 @@ class VoterStatusPage:
     def reset_fields(self):
         self.voterid_Entry.delete(0, "end")
         self.result_label.configure(text="", text_color="white")
-        # ✅ FIX: Only set text, never pass empty string to image parameter
         self.qr_label.configure(text="QR Code Area")
-        self.qr_image = None  # ✅ FIX: Clear image reference
+        self.qr_image = None 
         self.Gqr_btn.configure(state="disabled")
         self.print_btn.configure(state="disabled")
         self.qr_path = None
@@ -215,7 +214,6 @@ class VoterStatusPage:
         qr_img = qrcode.make(voter_id)
         qr_img.save(self.qr_path)
 
-        # ✅ FIX: Store image in self.qr_image instead of local variable
         self.qr_image = ctk.CTkImage(Image.open(self.qr_path), size=(200, 200))
         self.qr_label.configure(image=self.qr_image, text="")
 
